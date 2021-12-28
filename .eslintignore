@@ -1,0 +1,6 @@
+src/reportWebVitals.js
+src/setupTests.js
+src/App.test.js
+src/**/*.css
+src/**/*.scss
+src/**/*.svg
