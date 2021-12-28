@@ -11,7 +11,7 @@ export default function HomePage() {
       {/* ! Search Form*/}
       <form id="form-search" className="mb-5">
         <label htmlFor="SearchPokemon" className="form-label">
-          Search pokemon:
+          Search pokemon
         </label>
         <input
           type="text"
@@ -22,7 +22,7 @@ export default function HomePage() {
       </form>
 
       {/* List Carts Of Pokemon */}
-      <div className="row" data-masonry='{"percentPosition": true }'>
+      <div className="row">
         <div className="col-lg-3 col-md-4 mt-4">
           <div className="card">
             <img
