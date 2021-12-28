@@ -3,7 +3,7 @@ import './home.css'
 
 export default function HomePage() {
   return (
-    <div className="container-fluid">
+    <div className="container">
       {/* Logo */}
       <h1 className="text-center mb-5" id="logo-page">
         Pokemon Dex
@@ -11,7 +11,7 @@ export default function HomePage() {
       {/* ! Search Form*/}
       <form id="form-search" className="mb-5">
         <label htmlFor="SearchPokemon" className="form-label">
-          Search pokemon
+          Search
         </label>
         <input
           type="text"
