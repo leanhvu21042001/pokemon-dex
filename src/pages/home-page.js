@@ -21,7 +21,7 @@ export default function HomePage() {
       </form>
 
       {/* List Carts Of Pokemon */}
-      <div className="row">
+      <div className="row" data-masonry='{"percentPosition": true }'>
         <div className="col-lg-3 col-md-4 mt-4">
           <div className="card">
             <img
