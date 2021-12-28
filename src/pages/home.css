@@ -57,3 +57,15 @@
   background-color: var(--bs-pink) !important;
   color: #fff;
 }
+
+/* ======================= Styles for LIST OF POKEMON ======================= */
+#pokemon-pagination a {
+  color: var(--bs-pink);
+  font-size: 1.5rem;
+}
+#pokemon-pagination li.page-item.active a.page-link {
+  background-color: var(--bs-pink);
+  color: #fff;
+  border: 1px solid #fff;
+  font-weight: 500;
+}
