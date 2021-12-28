@@ -1,23 +1,24 @@
 import React from 'react'
+import './home.css'
 
 export default function HomePage() {
   return (
     <div className="container-fluid">
       {/* Logo */}
-      <h1 className="text-center">Pokemon Dex</h1>
+      <h1 className="text-center mb-5" id="logo-page">
+        Pokemon Dex
+      </h1>
       {/* ! Search Form*/}
-      <form>
-        <div className="mb-3">
-          <label htmlFor="SearchPokemon" className="form-label">
-            Search pokemon
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="SearchPokemon"
-            aria-describedby="SearchPokemon"
-          />
-        </div>
+      <form id="form-search" className="mb-5">
+        <label htmlFor="SearchPokemon" className="form-label">
+          Search pokemon:
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="SearchPokemon"
+          aria-describedby="SearchPokemon"
+        />
       </form>
 
       {/* List Carts Of Pokemon */}
