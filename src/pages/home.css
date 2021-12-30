@@ -1,0 +1,71 @@
+/* 
+* Author: Raymond.
+* Created: 28/12/2021.
+*/
+
+/* ======================= Styles for LOGO page ======================= */
+#logo-page {
+  font-size: 4rem;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ======================= Styles for SEARCH FORM ======================= */
+#form-search {
+  /* display: flex; */
+  width: 80%;
+  margin: 0 auto;
+}
+
+#form-search label {
+  flex: 2;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-shadow: 0 4px 0 #ccc, 0 4px 3px #ccc;
+}
+
+#form-search input {
+  flex: 5;
+  font-size: 2rem;
+  border-radius: 50px;
+  padding: 0 30px;
+}
+
+/* Responsive search form */
+@media screen and (min-width: 1570px) {
+  #form-search {
+    width: 70%;
+    display: flex;
+  }
+  #form-search label {
+    font-size: 2.3rem;
+  }
+}
+
+/* ======================= Styles for LIST OF POKEMON ======================= */
+.card-pokemon {
+  padding: 15px;
+  border: none;
+  box-shadow: 0px 1px 5px rgb(206, 206, 206) !important;
+  border-radius: 10px;
+}
+
+.card-pokemon a.btn.btn-purple {
+  background-color: var(--bs-pink) !important;
+  color: #fff;
+}
+
+/* ======================= Styles for LIST OF POKEMON ======================= */
+#pokemon-pagination a {
+  color: var(--bs-pink);
+  font-size: 1.5rem;
+}
+#pokemon-pagination li.page-item.active a.page-link {
+  background-color: var(--bs-pink);
+  color: #fff;
+  border: 1px solid #fff;
+  font-weight: 500;
+}
