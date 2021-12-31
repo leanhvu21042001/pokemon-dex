@@ -1,0 +1,8 @@
+.btn-purple {
+  background-color: var(--bs-pink) !important;
+  color: #fff;
+}
+
+.btn-purple:hover {
+  color: #fff;
+}

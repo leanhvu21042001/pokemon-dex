@@ -10,14 +10,14 @@ export default function HomePage() {
       </h1>
       {/* ! Search Form*/}
       <form id="form-search" className="mb-5">
-        <label htmlFor="SearchPokemon" className="form-label">
-          Search
+        <label htmlFor="search-pokemon-input" className="form-label">
+          Search pokemon
         </label>
         <input
           type="text"
           className="form-control"
-          id="SearchPokemon"
-          aria-describedby="SearchPokemon"
+          id="search-pokemon-input"
+          aria-describedby="search-pokemon-input"
         />
       </form>
 

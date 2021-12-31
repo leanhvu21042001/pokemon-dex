@@ -1,9 +1,10 @@
+import DetailPage from './pages/detail-page'
 import HomePage from './pages/home-page'
 
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      <DetailPage />
     </div>
   )
 }
