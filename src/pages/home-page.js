@@ -1,7 +1,21 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useCallback, useEffect, useState } from 'react'
 import './home.css'
 
 export default function HomePage() {
+  const [pokemonsPaginateData, setPokemonsPaginateData] = useState([])
+
+  const fetchPokemonsPaginateData = useCallback((offset = 0, limit = 20) => {
+    const url = `https://pokeapi.co/api/v2/pokemon?${offset}=1&limit=${limit}`
+    return axios.get(url).then(response => response.data)
+  }, [])
+
+  useEffect(() => {
+    fetchPokemonsPaginateData().then(pokemonsPaginateData => {
+      setPokemonsPaginateData(pokemonsPaginateData?.results)
+    })
+  }, [fetchPokemonsPaginateData])
+
   return (
     <div className="container">
       {/* Logo */}
@@ -23,125 +37,13 @@ export default function HomePage() {
 
       {/* List Carts Of Pokemon */}
       <div className="row mb-5" id="list-of-pokemon">
-        <div className="col-xl-3 col-lg-4 col-md-6 mt-4">
-          <div className="card card-pokemon">
-            <img
-              src="https://dummyimage.com/180x120/dbdbdb/787878.png&text=Image+cap"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#!" className="btn btn-purple">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-xl-3 col-lg-4 col-md-6 mt-4">
-          <div className="card card-pokemon">
-            <img
-              src="https://dummyimage.com/180x120/dbdbdb/787878.png&text=Image+cap"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#!" className="btn btn-purple">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-xl-3 col-lg-4 col-md-6 mt-4">
-          <div className="card card-pokemon">
-            <img
-              src="https://dummyimage.com/180x120/dbdbdb/787878.png&text=Image+cap"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#!" className="btn btn-purple">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-xl-3 col-lg-4 col-md-6 mt-4">
-          <div className="card card-pokemon">
-            <img
-              src="https://dummyimage.com/180x120/dbdbdb/787878.png&text=Image+cap"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#!" className="btn btn-purple">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-xl-3 col-lg-4 col-md-6 mt-4">
-          <div className="card card-pokemon">
-            <img
-              src="https://dummyimage.com/180x120/dbdbdb/787878.png&text=Image+cap"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#!" className="btn btn-purple">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-xl-3 col-lg-4 col-md-6 mt-4">
-          <div className="card card-pokemon">
-            <img
-              src="https://dummyimage.com/180x120/dbdbdb/787878.png&text=Image+cap"
-              className="card-img-top"
-              alt="..."
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#!" className="btn btn-purple">
-                Go somewhere
-              </a>
-            </div>
-          </div>
-        </div>
+        {pokemonsPaginateData.map((pokemon, index) => (
+          <CardPokemon
+            key={index + Date.now()}
+            pokemon={pokemon}
+            fetchPokemonsPaginateData={fetchPokemonsPaginateData}
+          />
+        ))}
       </div>
 
       {/* Pagination */}
@@ -180,6 +82,60 @@ export default function HomePage() {
             </li>
           </ul>
         </nav>
+      </div>
+    </div>
+  )
+}
+
+function CardPokemon({ pokemon, fetchPokemonsPaginateData }) {
+  // save state detail pokemon.
+  const [detailPokemon, setDetailPokemon] = useState(() => ({
+    id: '',
+    name: '',
+    front_default: '',
+    types: ''
+  }))
+
+  // get detail of pokemon.
+  const fetchDetailPokemon = useCallback(url => {
+    return axios.get(url).then(response => response.data)
+  }, [])
+
+  useEffect(() => {
+    fetchDetailPokemon(`${pokemon?.url}`).then(response => {
+      // assignment data.
+      let data = {}
+      data.id = response?.id
+      data.name = response?.name
+      data.types = response?.types
+      data.front_default = response?.sprites.front_default
+      const types = Object.values(response?.types).map(type => type.type.name)
+      data.types = types.join(', ') + '.'
+
+      // set data for state.
+      setDetailPokemon(data)
+    })
+  }, [fetchDetailPokemon, pokemon?.url])
+
+  return (
+    <div className="col-xl-3 col-lg-4 col-md-6 mt-4">
+      <div className="card card-pokemon">
+        <img
+          src={`${detailPokemon.front_default}`}
+          className="card-img-top"
+          alt={`${detailPokemon.name}`}
+        />
+        <div className="card-body">
+          <h5 className="card-title">{detailPokemon.name}</h5>
+          <p className="card-text">
+            <b>Types</b>: {detailPokemon.types}
+          </p>
+          <div className="d-flex justify-content-end">
+            <a href={`#${detailPokemon.id}`} className="btn btn-purple">
+              Detail
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   )
