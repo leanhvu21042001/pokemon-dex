@@ -152,7 +152,7 @@ export default function Detail() {
         </div>
       </div>
       <hr className="mb-5" />
-      <Link to={'/home'} className="btn btn-purple pts-content-sm">
+      <Link to={'/pokemon-dex'} className="btn btn-purple pts-content-sm">
         Back home
       </Link>
     </div>

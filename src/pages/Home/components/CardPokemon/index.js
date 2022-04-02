@@ -56,7 +56,7 @@ export default function CardPokemon({ pokemon }) {
           </p>
           <div className="d-flex justify-content-end">
             <Link
-              to={`/detail/${detailPokemon?.id}`}
+              to={`/pokemon-dex/detail/${detailPokemon?.id}`}
               className="btn btn-purple"
             >
               Detail

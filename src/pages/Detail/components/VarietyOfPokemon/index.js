@@ -36,7 +36,7 @@ const VarietyOfPokemon = ({ pokemon, index }) => {
   return (
     <div className="col-4 text-center">
       <div>#{index + 1}</div>
-      <Link to={`/detail/${detailPokemon?.id}`}>
+      <Link to={`/pokemon-dex/detail/${detailPokemon?.id}`}>
         {detailPokemon?.sprites?.frontDefault &&
         detailPokemon?.sprites?.backDefault ? (
           <img
@@ -53,7 +53,7 @@ const VarietyOfPokemon = ({ pokemon, index }) => {
 
       <Link
         className="d-block h5 pokemon-variety"
-        to={`/detail/${detailPokemon?.id}`}
+        to={`/pokemon-dex/detail/${detailPokemon?.id}`}
       >
         {detailPokemon?.name}
       </Link>
