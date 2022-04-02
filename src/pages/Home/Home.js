@@ -108,8 +108,8 @@ export default function Home() {
       </h1>
       {/* ! Search Form*/}
       <form id="form-search" className="mb-5" onSubmit={handleSubmitSearchForm}>
-        <div className="row">
-          <div className="col-10">
+        <div className="row form-search-rs">
+          <div className="col-md-10">
             <label htmlFor="search-pokemon" className="form-label">
               Search
             </label>
@@ -122,7 +122,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="col-2 d-flex align-items-end">
+          <div className="col-md-2 mt-sm-3 d-flex align-items-end">
             <select
               className="form-select"
               aria-label="Default select example"
