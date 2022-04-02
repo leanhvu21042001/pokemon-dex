@@ -12,20 +12,20 @@ export const history = createBrowserHistory()
 export const routes = {
   homePage: {
     id: nanoid(5),
-    path: '/home',
+    path: '/pokemon-dex',
     exact: true,
     component: HomePage
   },
   detailPage: {
     id: nanoid(5),
-    path: '/detail/:id',
+    path: '/pokemon-dex/detail/:id',
     exact: true,
     component: DetailPage
   },
   default: {
     id: nanoid(5),
-    path: '/',
-    component: () => <Navigate to={`/home`} />
+    path: '*',
+    component: () => <Navigate to={`/pokemon-dex`} />
   }
 }
 
